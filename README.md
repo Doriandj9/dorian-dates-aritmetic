@@ -1,1 +1,2 @@
-# Es un libreria muy pequeña que sirve para manejar las fechas
+# Aritmetica con Fechas
+Es un una libreria pequeña que permite el manejo de fechas de forma facil
