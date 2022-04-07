@@ -1,0 +1,27 @@
+{
+    "name": "dorian-dates/aritmetic",
+    "description": "Es un modulo que permite manejar las fechas",
+    "type": "library",
+    "license": "GNU",
+    "autoload": {
+        "psr-4": {
+           "Dates\\Manejos\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DorianA",
+            "email": "dorian9armijos@gmail.com",
+            "role": "Programador"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpunit/phpunit": "10.0.x-dev"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dates\\Manejos\\Tests\\": "tests/"
+        }
+    }
+}

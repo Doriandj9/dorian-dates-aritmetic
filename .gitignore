@@ -1,0 +1,5 @@
+#Ingora lo siguiente
+/vendor/
+composer.lock
+.vscode/
+.phpunit.cache/
