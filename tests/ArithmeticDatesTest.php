@@ -3,19 +3,23 @@
 namespace Dates\Manejos\Test;
 
 use Dates\Manejos\ArithmeticDates;
-use DateTime;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @uses ArArithmeticDates
+ */
 class ArithmeticDatesTest extends TestCase
 {
+    protected $arithmeticDates;
     /**
      * @test
+     * @covers ArithmeticDates::format
      */
 
     public function isArithmeticDates()
     {
-        $date = new ArithmeticDates('2022-05-15', zoneHoraria:'America/Guayaquil');
+        $this->arithmeticDates = new ArithmeticDates('2022-05-15', 'America/Guayaquil');
 
-        $this->assertSame(new ArithmeticDates('2022-05-15', zoneHoraria:'America/Guayaquil'), $date);
+        $this->assertSame('2022-05-15', $this->arithmeticDates->format('Y-m-d'));
     }
 }

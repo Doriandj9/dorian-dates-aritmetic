@@ -288,7 +288,8 @@ class ArithmeticDates extends \DateTime
         DateTime|ArithmeticDates $start,
         DateTime|ArithmeticDates $end,
         DateTime|ArithmeticDates $date
-    ): bool {
+    ): bool
+    {
         $startInterval = $start->getTimestamp();
         $endInterval = $end->getTimestamp();
 
