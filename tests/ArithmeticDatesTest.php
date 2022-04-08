@@ -18,7 +18,7 @@ class ArithmeticDatesTest extends TestCase
 
     public function isArithmeticDates()
     {
-        $this->arithmeticDates = new ArithmeticDates('2022-05-15', zoneHoraria:'America/Guayaquil');
+        $this->arithmeticDates = new ArithmeticDates('2022-05-15', 'America/Guayaquil');
 
         $this->assertSame('2022-05-15', $this->arithmeticDates->format('Y-m-d'));
     }
