@@ -49,7 +49,7 @@ class ArithmeticDates extends \DateTime
         /**
          * Los siguientes if realizar la tarea de identificar que sea una fecha valida caso contrario regresa un Exception Error
          */
-        
+
         if (strtolower($datetime) != 'now' && !preg_match(self::REG_E, $datetime)) {
             throw new \Exception('Error no ingreso una fecha correcta');
         }
@@ -63,7 +63,7 @@ class ArithmeticDates extends \DateTime
         if ($zoneHoraria) {
                 date_default_timezone_set($zoneHoraria);
         }
-        
+
         $this->datetime = new \DateTime($datetime);
         parent::__construct($this->datetime->format('Y-m-d H:i:s'));
         $this->day          = $this->datetime->format('d');
@@ -87,7 +87,7 @@ class ArithmeticDates extends \DateTime
         if ($numberMoth < 0) {
             throw new Exception('Error no se puede aumentar meses negativos');
         }
-     
+
         $mounthChange = intval($this->mounth, 10);
         $calculo = $mounthChange + $numberMoth;
         $moreYear = $this->year;
@@ -284,8 +284,11 @@ class ArithmeticDates extends \DateTime
      * @return bool
      */
 
-    public static function hasInterval(DateTime|ArithmeticDates $start, DateTime|ArithmeticDates $end, DateTime | ArithmeticDates $date): bool
-    {
+    public static function hasInterval(
+        DateTime|ArithmeticDates $start,
+        DateTime|ArithmeticDates $end,
+        DateTime|ArithmeticDates $date
+    ): bool {
         $startInterval = $start->getTimestamp();
         $endInterval = $end->getTimestamp();
 
