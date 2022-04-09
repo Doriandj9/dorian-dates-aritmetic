@@ -2,7 +2,7 @@
     "name": "dorian-dates/aritmetic",
     "description": "Es un modulo que permite manejar las fechas",
     "type": "library",
-    "license": "GNU",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
            "Dates\\Manejos\\": "src/"
