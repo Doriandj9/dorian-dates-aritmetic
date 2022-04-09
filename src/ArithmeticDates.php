@@ -3,7 +3,6 @@
 namespace Dates\Manejos;
 
 use DateTime;
-use Exception;
 use InvalidArgumentException;
 
 /**
@@ -86,11 +85,11 @@ class ArithmeticDates extends \DateTime
     {
         if ($numberMoth > 12) {
             $this->message = 'Desborda el numero de meses permitidos';
-            throw new Exception($this->message);
+            throw new InvalidArgumentException($this->message);
         }
         if ($numberMoth < 0) {
             $this->message ='Error no se puede aumentar meses negativos' ;
-            throw new Exception($this->message);
+            throw new InvalidArgumentException($this->message);
         }
 
         $mounthChange = intval($this->mounth, 10);
