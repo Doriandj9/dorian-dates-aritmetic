@@ -233,6 +233,7 @@ class ArithmeticDates extends \DateTime
             $moreDays = $this->day;
             $moreHours = $hoursCalculo - 24;
         }
+        $moreHours = $hoursCalculo;
         if ($moreHours < 9) {
             $moreHours = '0' . $moreHours;
         }
