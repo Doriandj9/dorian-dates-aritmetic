@@ -48,7 +48,7 @@ class ArithmeticDates extends \DateTime
     public function __construct(string $datetime = 'now', string $zoneHoraria = null)
     {
         /**
-         * Los siguientes if realizar la tarea de identificar que sea una fecha valida caso contrario regresa un Exception Error
+         * Los siguientes if realizar la tarea de identificar que sea una fecha valida
          */
 
         if (strtolower($datetime) != 'now' && !preg_match(self::REG_E, $datetime)) {
@@ -57,7 +57,6 @@ class ArithmeticDates extends \DateTime
         $argumentsDate = preg_split('/\s/', $datetime);
         if (count($argumentsDate) > 1 && !preg_match(self::REG_EXP_DOS, $argumentsDate[1])) {
             throw new InvalidArgumentException('Error la hora ingresada es incorrecta');
-            
         }
         /**
          * Verifica que tenga agregada una zona horaria
@@ -79,7 +78,7 @@ class ArithmeticDates extends \DateTime
     /**
      * Este metodo permite aumentar los meses de la fecha actual
      *
-     * @param int $numberMoth Es un entero que aumenta a la fecha actual el numero de meses  este valor no puede ser > 12 o < 0
+     * @param int $numberMoth Es un entero que aumenta a la fecha el numero de meses  este valor no puede ser > 12 o < 0
      */
     public function setMoth(int $numberMoth): void
     {
@@ -88,7 +87,7 @@ class ArithmeticDates extends \DateTime
             throw new InvalidArgumentException($this->message);
         }
         if ($numberMoth < 0) {
-            $this->message ='Error no se puede aumentar meses negativos' ;
+            $this->message = 'Error no se puede aumentar meses negativos' ;
             throw new InvalidArgumentException($this->message);
         }
 
@@ -126,7 +125,9 @@ class ArithmeticDates extends \DateTime
             throw new InvalidArgumentException($this->message);
         }
         $this->year = intval($this->year, 10) + $year;
-        $formatDate = $this->year . '-' . $this->mounth . '-' . $this->day . ' ' . $this->hours . ':' . $this->minute . ':' . $this->seconds . '.' . $this->microseconds;
+        $dateFormat = $this->year . '-' . $this->mounth . '-' . $this->day . ' ';
+        $timeFormat = $this->hours . ':' . $this->minute . ':' . $this->seconds . '.' . $this->microseconds;
+        $formatDate =  $dateFormat . $timeFormat;
         $this->datetime = new \DateTime($formatDate);
     }
 
@@ -155,10 +156,9 @@ class ArithmeticDates extends \DateTime
                 $this->setMoth(1);
                 $moreMounth = $this->mounth;
                 $moreDays = $daysCalculo - $daysmorMount;
-            }else{
+            } else {
                 $moreDays = $daysmorMount - $daysCalculo;
             }
-            
         }
 
         if ($moreDays < 10) {
@@ -178,7 +178,7 @@ class ArithmeticDates extends \DateTime
      *
      * @param int $hours Son las horas que se aumneta a la fecha el valor no puede ser > 24 y < 0
      * @param int $minutes Son los minutos que se aumenta a la fecha el valor no puede ser > 60 y < 0
-     * @param int $seconds Son los segundos que se aumenta a la fecha el valor no puede ser > 60 y < 0 y si no ingresa un valor los segundos se colocan en 00
+     * @param int $seconds Son los segundos que se aumenta a la fecha el valor no puede ser > 60 y < 0
      * @return void
      */
     public function setHourMinutesSeconds(int $hours, int $minutes, int $seconds = 00): void
@@ -222,9 +222,9 @@ class ArithmeticDates extends \DateTime
         if ($minutesCalculo > 60) {
             $hoursCalculo += 1;
             $moreMinites = $minutesCalculo - 60;
-            if ($moreMinites < 9) {
-                $moreMinites = '0' . $moreMinites;
-            }
+        }
+        if ($moreMinites < 9) {
+            $moreMinites = '0' . $moreMinites;
         }
 
         $moreDays = $this->day;
@@ -232,11 +232,10 @@ class ArithmeticDates extends \DateTime
             $this->setDay(1);
             $moreDays = $this->day;
             $moreHours = $hoursCalculo - 24;
-            if ($moreHours < 9) {
-                $moreHours = '0' . $moreHours;
-            }
         }
-
+        if ($moreHours < 9) {
+            $moreHours = '0' . $moreHours;
+        }
         if (intval($moreMinites) == 60 && intval($moreSeconds) == 00) {
             $moreMinites = '59';
             $moreSeconds = '60';
@@ -277,7 +276,7 @@ class ArithmeticDates extends \DateTime
         return date('L', strtotime($this->datetime->format('Y-m-d'))) &&  intval($this->mounth) == 2 ;
     }
     /**
-     * Esta funcion regresa el resultado final de haber aplicado los metodos de aumentar años, meses , dias , horas ,minutos  y segundos
+     * Esta funcion regresa el resultado final de haber aplicado los metodos
      *
      *  @return DateTime|ArithmeticDates
      */
