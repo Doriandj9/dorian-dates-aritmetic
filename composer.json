@@ -2,7 +2,7 @@
     "name": "dorian-dates/aritmetic",
     "description": "Es un modulo que permite manejar las fechas",
     "type": "library",
-    "license": "GNU",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
            "Dates\\Manejos\\": "src/"
@@ -17,16 +17,16 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "4.0.x-dev",
         "phpunit/phpunit": "dev-master"
     },
     "autoload-dev": {
         "psr-4": {
             "Dates\\Manejos\\Tests\\": "tests/"
         }
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "4.0.x-dev"
     },
     "scripts": {
         "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox",
