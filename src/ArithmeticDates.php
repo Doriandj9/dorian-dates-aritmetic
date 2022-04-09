@@ -3,7 +3,7 @@
 namespace Dates\Manejos;
 
 use DateTime;
-use Exception;
+use InvalidArgumentException;
 
 /**
  * Es una clase que maneja fechas de forma facil
@@ -39,6 +39,7 @@ class ArithmeticDates extends \DateTime
     private $microseconds;
     private $year;
     private $mounth;
+    private $message;
     private const REG_E = "/^([0-9]{4}\b)-([0][1-9]{1}\b|[1][0-2]{1}\b)-([0][1-9]{1}\b|[1-2][0-9]{1}\b|[3][0-1]{1}\b)/";
     private const REG_EXP_DOS = "([0-1][0-9]{1}\b|[2][0-4]{1}\b):([0-5][0-9]{1}\b|60):([0-5][0-9]{1}\b|60)";
     /**
@@ -51,11 +52,12 @@ class ArithmeticDates extends \DateTime
          */
 
         if (strtolower($datetime) != 'now' && !preg_match(self::REG_E, $datetime)) {
-            throw new \Exception('Error no ingreso una fecha correcta');
+            throw new InvalidArgumentException('Error no ingreso una fecha correcta');
         }
         $argumentsDate = preg_split('/\s/', $datetime);
         if (count($argumentsDate) > 1 && !preg_match(self::REG_EXP_DOS, $argumentsDate[1])) {
-            throw new \Exception('Error la hora ingresada es incorrecta');
+            throw new InvalidArgumentException('Error la hora ingresada es incorrecta');
+            
         }
         /**
          * Verifica que tenga agregada una zona horaria
@@ -82,10 +84,12 @@ class ArithmeticDates extends \DateTime
     public function setMoth(int $numberMoth): void
     {
         if ($numberMoth > 12) {
-            throw new Exception('Desborda el numero de meses permitidos si quiere aumentar años use el metodo setYear');
+            $this->message = 'Desborda el numero de meses permitidos';
+            throw new InvalidArgumentException($this->message);
         }
         if ($numberMoth < 0) {
-            throw new Exception('Error no se puede aumentar meses negativos');
+            $this->message ='Error no se puede aumentar meses negativos' ;
+            throw new InvalidArgumentException($this->message);
         }
 
         $mounthChange = intval($this->mounth, 10);
@@ -118,7 +122,8 @@ class ArithmeticDates extends \DateTime
     public function setYear(int $year)
     {
         if ($year < 0) {
-            throw new Exception('Error no se puede aumentar años negativos verifique y continue');
+            $this->message = 'Error no se puede aumentar años negativos';
+            throw new InvalidArgumentException($this->message);
         }
         $this->year = intval($this->year, 10) + $year;
         $formatDate = $this->year . '-' . $this->mounth . '-' . $this->day . ' ' . $this->hours . ':' . $this->minute . ':' . $this->seconds . '.' . $this->microseconds;
@@ -135,7 +140,8 @@ class ArithmeticDates extends \DateTime
     public function setDay(int $day): void
     {
         if ($day > 31 || $day < 0) {
-            throw new Exception('Error el valor no puede ser mayor a 31 o menor a 0 verifique y continue');
+            $this->message = 'Error el valor no puede ser mayor a 31 o menor a 0';
+            throw new InvalidArgumentException($this->message);
         }
         $numberDays = $this->getMothDay($this->mounth);
         $daysCalculo = intval($this->day) + $day;
@@ -149,8 +155,10 @@ class ArithmeticDates extends \DateTime
                 $this->setMoth(1);
                 $moreMounth = $this->mounth;
                 $moreDays = $daysCalculo - $daysmorMount;
+            }else{
+                $moreDays = $daysmorMount - $daysCalculo;
             }
-            $moreDays = $daysmorMount - $daysCalculo;
+            
         }
 
         if ($moreDays < 10) {
@@ -176,13 +184,16 @@ class ArithmeticDates extends \DateTime
     public function setHourMinutesSeconds(int $hours, int $minutes, int $seconds = 00): void
     {
         if ($hours > 24 || $hours < 0) {
-            throw new Exception('Error las horas no deben sobrepasar el valor de 24 que es un dia o menor a 0 verifique y vuelva a intertalo');
+            $this->message = 'Error las horas no deben sobrepasar el valor de 24 o menor a 0';
+            throw new InvalidArgumentException($this->message);
         }
         if ($minutes > 60 || $minutes < 0) {
-            throw new Exception('Error los minitos no deben sobrepasar los 60 que es una hora o ser menores a 0 verifique y vuelva a intentarlo');
+            $this->message = 'Error los minitos no deben sobrepasar los 60 o ser menores a 0';
+            throw new InvalidArgumentException($this->message);
         }
         if ($seconds > 60 || $seconds < 0) {
-            throw new Exception('Error los segundos no deben sobrepasar los 60 que es un minito o ser menores a 0 verifique y vuelva a intentarlo');
+            $this->message = 'Error los segundos no deben sobrepasar los 60 o ser menores a 0';
+            throw new InvalidArgumentException();
         }
 
         $hoursCalculo = intval($this->hours) + $hours;
