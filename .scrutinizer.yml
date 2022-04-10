@@ -1,7 +1,9 @@
 build:
-    image: default-bionic
-    environment:
-        php: 8.1.2
+  image: default-bionic
+  environment:
+    php:
+      version: "8.1.2"
+
   nodes:
     coverage:
       tests:
