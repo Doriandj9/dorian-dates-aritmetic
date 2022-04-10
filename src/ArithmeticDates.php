@@ -41,7 +41,6 @@ class ArithmeticDates extends \DateTime
     private $mounth;
     private $message;
     private const REG_E = "/^([0-9]{4}\b)-([0][1-9]{1}\b|[1][0-2]{1}\b)-([0][1-9]{1}\b|[1-2][0-9]{1}\b|[3][0-1]{1}\b)/";
-    private const REG_EXP_DOS = "([0-1][0-9]{1}\b|[2][0-4]{1}\b):([0-5][0-9]{1}\b|60):([0-5][0-9]{1}\b|60)";
     /**
      *
      */
@@ -53,10 +52,6 @@ class ArithmeticDates extends \DateTime
 
         if (strtolower($datetime) != 'now' && !preg_match(self::REG_E, $datetime)) {
             throw new InvalidArgumentException('Error no ingreso una fecha correcta');
-        }
-        $argumentsDate = preg_split('/\s/', $datetime);
-        if (count($argumentsDate) > 1 && !preg_match(self::REG_EXP_DOS, $argumentsDate[1])) {
-            throw new InvalidArgumentException('Error la hora ingresada es incorrecta');
         }
         /**
          * Verifica que tenga agregada una zona horaria
@@ -233,6 +228,7 @@ class ArithmeticDates extends \DateTime
             $moreDays = $this->day;
             $moreHours = $hoursCalculo - 24;
         }
+        $moreHours = $hoursCalculo;
         if ($moreHours < 9) {
             $moreHours = '0' . $moreHours;
         }

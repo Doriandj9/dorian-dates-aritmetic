@@ -42,7 +42,28 @@ $date->setHourMinutesSeconds(5,20,15);
 // Este metodo retorna el resultado de haber aplicado los metodos anteriores en como un DateTime
 $resulArithmeticDate = $date->getResult();
 // El resultado un nueva fecha modificada y con todos los metodos de DateTime
-$resulArithmeticDate->getTimestamp(); // Devuelve el fecha en unidad UNIX en milisegundos propio de DateTime 
+$resulArithmeticDate->getTimestamp(); // Devuelve el fecha en unidad UNIX en milisegundos propio de DateTime
+
+/*Metodos Estaticos de la clase ArithmeticDates*/
+//Este metodo estatico sirve para identificar si una fecha se encuentra dentro de un rango de fechas
+// Recibe tres parametros el primero es la fecha minima del intervalo
+//El segundo es la fecha maxima del intervalo 
+//El tercero es la fecha que se va a identificar dentro de ese rango 
+// La representacion matematica es [a,b] = {fechaA <= fecha <= fechaB}
+// Retorna true si se encuentra en ese rango y false si no 
+$arithmeticDatesA = new ArithmeticDates('2022-02-15 00:00:00','America/Guayaquil');
+$arithmeticDatesB = new ArithmeticDates('2022-05-01 00:00:00','America/Guayaquil');
+$arithmeticDates = new ArithmeticDates('2022-04-09 00:00:00','America/Guayaquil');
+ArithmeticDates::hasInterval($this->arithmeticDatesA,$this->arithmeticDatesB,$this->arithmeticDates) // true
 ```
+- Tener en cuenta que los segundos afectan en el resultado de la respuesta que regresa hasInterval 
+```php
+$arithmeticDatesA = new ArithmeticDates('2022-02-15 12:30:40','America/Guayaquil');
+$arithmeticDatesB = new ArithmeticDates('2022-05-01 12:30:45','America/Guayaquil');
+$arithmeticDates = new ArithmeticDates('2022-05-01 12:30:50','America/Guayaquil');
+ArithmeticDates::hasInterval($this->arithmeticDatesA,$this->arithmeticDatesB,$this->arithmeticDates) // false
+```
+- Retorna false ya que los segundos son mayores que el arithmeticDatesB
+
 - El orden en que se aplique los metodos pueden variar no va resultar en errores ya que se la clase tiene esta diseñada para manejar los desbordes ademas de los años bisiestos
 
