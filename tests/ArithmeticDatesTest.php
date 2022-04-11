@@ -14,8 +14,7 @@ class ArithmeticDatesTest extends TestCase
     protected $arithmeticDatesA;
     protected $arithmeticDatesB;
     /**
-     * @test
-     * @covers ArithmeticDates
+     * @tes
      */
 
     public function isArithmeticDates()
@@ -26,8 +25,7 @@ class ArithmeticDatesTest extends TestCase
     }
 
     /**
-     * @test
-     * @covers ArithmeticDates
+     * @tes
      */
 
     public function moreHours()
@@ -40,7 +38,6 @@ class ArithmeticDatesTest extends TestCase
 
      /**
       * @test
-      * @covers ArithmeticDates
       */
 
     public function isHasInterval()
