@@ -18,19 +18,19 @@ class ArithmeticDatesTest extends TestCase
      * @covers ArithmeticDates
      */
 
-    public function isArithmeticDates()
+    public function isArithmeticDates(): void
     {
         $this->arithmeticDates = new ArithmeticDates('2022-05-15', 'America/Guayaquil');
 
-        $this->assertSame('2022-05-15', $this->arithmeticDates->format('Y-m-d'));
+        $this->assertInstanceOf(ArithmeticDates::class,$this->arithmeticDates);
     }
 
     /**
      * @test
-     * @covers ArithmeticDates
+     * @covers ArithmeticDates::getResult::format
      */
 
-    public function moreHours()
+    public function moreHours(): void
     {
         $this->arithmeticDates = new ArithmeticDates('2022-04-09 19:04:00', 'America/Guayaquil');
         $this->arithmeticDates->setHourMinutesSeconds(0, 0);
@@ -40,10 +40,10 @@ class ArithmeticDatesTest extends TestCase
 
      /**
       * @test
-      * @covers ArithmeticDates
+      * @covers ArithmeticDates::hasInterval
       */
 
-    public function isHasInterval()
+    public function isHasInterval(): void
     {
         $this->arithmeticDatesA = new ArithmeticDates('2022-02-15 00:00:00', 'America/Guayaquil');
         $this->arithmeticDatesB = new ArithmeticDates('2022-03-01 00:00:00', 'America/Guayaquil');
