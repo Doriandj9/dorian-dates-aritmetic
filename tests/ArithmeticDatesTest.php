@@ -15,13 +15,20 @@ class ArithmeticDatesTest extends TestCase
     protected $arithmeticDatesA;
     protected $arithmeticDatesB;
 
+    /**
+     * @covers Dates\Manejos\ArithmeticDates
+     */
 
     public function testIsArithmeticDates()
     {
         $this->arithmeticDates = new ArithmeticDates('2022-05-15', 'America/Guayaquil');
 
-        $this->assertSame('2022-05-15', $this->arithmeticDates->format('Y-m-d'));
+        $this->assertInstanceOf(ArithmeticDates::class, $this->arithmeticDates);
     }
+
+    /**
+     * @covers Dates\Manejos\ArithmeticDates::getResult::format
+     */
 
     public function testMoreHours()
     {
@@ -30,6 +37,10 @@ class ArithmeticDatesTest extends TestCase
 
         $this->assertSame('2022-04-09 19:04:00', $this->arithmeticDates->getResult()->format('Y-m-d H:i:s'));
     }
+
+    /**
+     * @covers Dates\Manejos\ArithmeticDates::hasInterval
+     */
 
     public function testIsHasInterval()
     {
