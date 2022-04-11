@@ -1,6 +1,6 @@
 # Aritmetica con Fechas
 Es un una libreria pequeña que permite el manejo de fechas de forma facil
-<p aling="center">
+<p align="center">
 <a href="https://scrutinizer-ci.com/g/Doriandj9/dorian-dates-aritmetic/?branch=master"><img src="https://scrutinizer-ci.com/g/Doriandj9/dorian-dates-aritmetic/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality" /></a>
 <a href="https://scrutinizer-ci.com/g/Doriandj9/dorian-dates-aritmetic/?branch=master"> <img src="https://scrutinizer-ci.com/g/Doriandj9/dorian-dates-aritmetic/badges/coverage.png?b=master" alt="Code Coverage" /> </a>
 </p>
