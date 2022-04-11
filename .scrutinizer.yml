@@ -3,12 +3,11 @@ build:
   environment:
     php:
       version: "8.1.4"
-
   nodes:
     coverage:
       tests:
         override:
-          - command: vendor/bin/phpunit --coverage-clover phpunit.coverage.xml 
+          - command: XDEBUG_MODE=coverage vendor/bin/phpunit --stop-on-error --stop-on-failure --coverage-clover coverage.xml
             coverage:
               file: coverage.xml
               format: clover

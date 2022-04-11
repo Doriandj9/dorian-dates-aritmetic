@@ -6,39 +6,32 @@ use Dates\Manejos\ArithmeticDates;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @uses ArArithmeticDates
+ * @covers Dates\Manejos\ArithmeticDates
  */
+
 class ArithmeticDatesTest extends TestCase
 {
     protected $arithmeticDates;
-    /**
-     * @test
-     * @covers 
-     */
+    protected $arithmeticDatesA;
+    protected $arithmeticDatesB;
 
-    public function isArithmeticDates(): void
+
+    public function testIsArithmeticDates()
     {
         $this->arithmeticDates = new ArithmeticDates('2022-05-15', 'America/Guayaquil');
 
-        $this->assertInstanceOf(ArithmeticDates::class,$this->arithmeticDates);
+        $this->assertSame('2022-05-15', $this->arithmeticDates->format('Y-m-d'));
     }
 
-    /**
-     * @test
-     * @covers 
-     */
+    public function testMoreHours()
+    {
+        $this->arithmeticDates = new ArithmeticDates('2022-04-09 19:04:00', 'America/Guayaquil');
+        $this->arithmeticDates->setHourMinutesSeconds(0, 0);
 
-     public function moreHours(){
-         $this->arithmeticDates = new ArithmeticDates(zoneHoraria:'America/Guayaquil');
-         $this->arithmeticDates->setHourMinutesSeconds(0,59);
+        $this->assertSame('2022-04-09 19:04:00', $this->arithmeticDates->getResult()->format('Y-m-d H:i:s'));
+    }
 
-
-     /**
-      * @test
-      * @covers ArithmeticDates
-      */
-
-    public function isHasInterval()
+    public function testIsHasInterval()
     {
         $this->arithmeticDatesA = new ArithmeticDates('2022-02-15 00:00:00', 'America/Guayaquil');
         $this->arithmeticDatesB = new ArithmeticDates('2022-03-01 00:00:00', 'America/Guayaquil');
@@ -49,5 +42,4 @@ class ArithmeticDatesTest extends TestCase
             ArithmeticDates::hasInterval($this->arithmeticDatesA, $this->arithmeticDatesB, $this->arithmeticDates)
         );
     }
-
 }
