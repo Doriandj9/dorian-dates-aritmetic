@@ -11,32 +11,27 @@ use PHPUnit\Framework\TestCase;
 class ArithmeticDatesTest extends TestCase
 {
     protected $arithmeticDates;
-    protected $arithmeticDatesA;
-    protected $arithmeticDatesB;
     /**
      * @test
-     * @covers ArithmeticDates::format
+     * @covers 
      */
 
-    public function isArithmeticDates()
+    public function isArithmeticDates(): void
     {
         $this->arithmeticDates = new ArithmeticDates('2022-05-15', 'America/Guayaquil');
 
-        $this->assertSame('2022-05-15', $this->arithmeticDates->format('Y-m-d'));
+        $this->assertInstanceOf(ArithmeticDates::class,$this->arithmeticDates);
     }
 
     /**
      * @test
-     * @covers ArithmeticDates::format
+     * @covers 
      */
 
-    public function moreHours()
-    {
-        $this->arithmeticDates = new ArithmeticDates('2022-04-09 19:04:00', 'America/Guayaquil');
-        $this->arithmeticDates->setHourMinutesSeconds(0, 0);
+     public function moreHours(){
+         $this->arithmeticDates = new ArithmeticDates(zoneHoraria:'America/Guayaquil');
+         $this->arithmeticDates->setHourMinutesSeconds(0,59);
 
-        $this->assertSame('2022-04-09 19:04:00', $this->arithmeticDates->getResult()->format('Y-m-d H:i:s'));
-    }
 
      /**
       * @test
@@ -54,4 +49,5 @@ class ArithmeticDatesTest extends TestCase
             ArithmeticDates::hasInterval($this->arithmeticDatesA, $this->arithmeticDatesB, $this->arithmeticDates)
         );
     }
+
 }

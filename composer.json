@@ -21,7 +21,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "4.0.x-dev",
-        "phpunit/phpunit": "dev-master"
+        "phpunit/phpunit": "9.5.0"
     },
     "autoload-dev": {
         "psr-4": {
@@ -30,7 +30,6 @@
     },
     "scripts": {
         "phpunit": "phpunit --stop-on-error --stop-on-failure --testdox",
-        "phpunit-xml": "phpunit --stop-on-error --stop-on-failure --coverage-clover phpunit.coverage.xml",
         "phpcs-check":  "phpcs --colors -s",
         "phpcs-fix":  "phpcbf --colors -s",
         "phpcs-auto-check": "@phpcs-check --standard=.phpcs.xml",

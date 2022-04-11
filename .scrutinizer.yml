@@ -1,12 +1,14 @@
 build:
+  image: default-bionic
   environment:
     php:
-      version: "8.0"
+      version: "8.1.4"
+
   nodes:
     coverage:
       tests:
         override:
-          - command: composer phpunit-xml
+          - command: vendor/bin/phpunit --coverage-clover phpunit.coverage.xml 
             coverage:
               file: coverage.xml
               format: clover
