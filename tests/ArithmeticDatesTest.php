@@ -40,7 +40,7 @@ class ArithmeticDatesTest extends TestCase
 
      /**
       * @test
-      * @covers ArithmeticDates::hasInterval
+      * @covers ArithmeticDates
       */
 
     public function isHasInterval()
