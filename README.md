@@ -54,14 +54,14 @@ $resulArithmeticDate->getTimestamp(); // Devuelve el fecha en unidad UNIX en mil
 $arithmeticDatesA = new ArithmeticDates('2022-02-15 00:00:00','America/Guayaquil');
 $arithmeticDatesB = new ArithmeticDates('2022-05-01 00:00:00','America/Guayaquil');
 $arithmeticDates = new ArithmeticDates('2022-04-09 00:00:00','America/Guayaquil');
-ArithmeticDates::hasInterval($this->arithmeticDatesA,$this->arithmeticDatesB,$this->arithmeticDates) // true
+ArithmeticDates::hasInterval($arithmeticDatesA,$arithmeticDatesB,$arithmeticDates) // true
 ```
 - Tener en cuenta que los segundos afectan en el resultado de la respuesta que regresa hasInterval 
 ```php
 $arithmeticDatesA = new ArithmeticDates('2022-02-15 12:30:40','America/Guayaquil');
 $arithmeticDatesB = new ArithmeticDates('2022-05-01 12:30:45','America/Guayaquil');
 $arithmeticDates = new ArithmeticDates('2022-05-01 12:30:50','America/Guayaquil');
-ArithmeticDates::hasInterval($this->arithmeticDatesA,$this->arithmeticDatesB,$this->arithmeticDates) // false
+ArithmeticDates::hasInterval($arithmeticDatesA,$arithmeticDatesB,$arithmeticDates) // false
 ```
 - Retorna false ya que los segundos son mayores que el arithmeticDatesB
 
