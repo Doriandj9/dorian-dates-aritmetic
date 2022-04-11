@@ -7,7 +7,7 @@ build:
     coverage:
       tests:
         override:
-          - command: composer phpunit
+          - command: composer phpunit-xml
             coverage:
               file: coverage.xml
               format: clover
