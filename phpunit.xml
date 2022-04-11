@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
-         cacheDirectory=".phpunit.cache"
-         executionOrder="depends,defects"
-         requireCoverageMetadata="true"
-         beStrictAboutCoverageMetadata="true"
-         beStrictAboutOutputDuringTests="true"
-         convertDeprecationsToExceptions="true"
-         failOnRisky="true"
-         failOnWarning="true"
-         verbose="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd" 
+backupGlobals="false" colors="true" convertErrorsToExceptions="true" 
+convertNoticesToExceptions="true" convertWarningsToExceptions="true" 
+processIsolation="false" stopOnFailure="false">
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="Package Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
@@ -22,4 +15,5 @@
             <directory suffix=".php">src</directory>
         </include>
     </coverage>
+    
 </phpunit>
